@@ -1,6 +1,6 @@
 # MLX LLM Example
 
-LLM model inference using the Apple MLX Framework.
+LLM model inference on Apple Silicon Mac using the Apple MLX Framework.
 
 [Apple MLX Framework Official GitHub Repository](https://github.com/ml-explore/mlx-examples)
 
@@ -9,7 +9,7 @@ LLM model inference using the Apple MLX Framework.
 ### Hardware
 
 - Apple MacBooke Pro (13-inch, M2, 2022)
-- Apple M2 (8 cores CPU, 10 cores GPU)
+- Apple M2 chips (8 cores CPU, 10 cores GPU)
 - 16GB RAM, 256GB SSD
 - macOS Sequoia 15.3
 
