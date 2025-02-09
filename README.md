@@ -2,6 +2,8 @@
 
 LLM model inference using the Apple MLX Framework.
 
+[Apple MLX Framework Official GitHub Repository](https://github.com/ml-explore/mlx-examples)
+
 ## Environment
 
 ### Hardware
