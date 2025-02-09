@@ -3,6 +3,7 @@
 LLM model inference on Apple Silicon Mac using the Apple MLX Framework.
 
 [Apple MLX Framework Official GitHub Repository](https://github.com/ml-explore/mlx-examples)
+[MLX Community Hugging Face Hub](https://huggingface.co/mlx-community)
 
 ## Environment
 
