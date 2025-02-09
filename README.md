@@ -34,12 +34,12 @@ pip install -r requirements.txt
 
 ### Streaming Inference
 
-| Args           | Type   | Default                                     | Description                |
-| -------------- | ------ | ------------------------------------------- | -------------------------- |
-| `--model`      | `str`  | `mlx-community/gemma-2-9b-it-4bit`          | Path to the model          |
-| `--prompt`     | `str`  | `What is the largest country in the world?` | Prompt text for LLM model  |
-| `--max_tokens` | `int`  | `512`                                       | Maximum tokens to generate |
-| `--verbose`    | `bool` |                                             | Verbose mode               |
+| Args            | Type   | Default                                     | Description                |
+| --------------- | ------ | ------------------------------------------- | -------------------------- |
+| `-m`, `--model` | `str`  | `mlx-community/gemma-2-9b-it-4bit`          | Path to the model          |
+| `--prompt`      | `str`  | `What is the largest country in the world?` | Prompt text for LLM model  |
+| `--max_tokens`  | `int`  | `512`                                       | Maximum tokens to generate |
+| `--verbose`     | `bool` |                                             | Verbose mode               |
 
 ```bash
 source .venv/bin/activate
@@ -58,4 +58,25 @@ python streaming.py --prompt "What is the capital of France?"
 
 # Run the streaming inference with custom max tokens
 python streaming.py --max_tokens 256
+```
+
+### Convert Hugging Face Model to MLX Model Format
+
+| Args               | Type   | Default | Description            |
+| ------------------ | ------ | ------- | ---------------------- |
+| `-m`, `--model`    | `str`  |         | Path to the model      |
+| `--quantize`       | `bool` |         | Whether Quantize model |
+| `--quantize_level` | `int`  | 4       | Quantize level (bits)  |
+
+```bash
+source .venv/bin/activate
+
+# Convert Hugging Face model to MLX model format
+python convert.py --model "google/gemma-2-9b-it"
+
+# Convert Hugging Face model to MLX model format with quantization
+python convert.py --model "google/gemma-2-9b-it" --quantize
+
+# Convert Hugging Face model to MLX model format with quantization and custom quantize level
+python convert.py --model "google/gemma-2-9b-it" --quantize --quantize_level 8
 ```
