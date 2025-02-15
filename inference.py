@@ -71,13 +71,13 @@ def parse_args():
         "-m", "--model",
         type=str,
         help="Path to the model",
-        default="mlx-community/gemma-2-9b-it-4bit",
+        required=True,
     )
     parser.add_argument(
         "--prompt",
         type=str,
         help="Prompt for the LLM model",
-        default="What is the largest country in the world?",
+        required=True,
     )
     parser.add_argument(
         "--max_tokens",

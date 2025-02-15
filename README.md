@@ -39,11 +39,11 @@ pip install -r requirements.txt
 
 ### Model Download
 
-| Args          | Type  | Default                    | Description                        |
-| ------------- | ----- | -------------------------- | ---------------------------------- |
-| `--repo_id`   | `str` |                            | Path or Hugging Face Repository ID |
-| `--token`     | `str` |                            | Hugging Face API Token             |
-| `--cache_dir` | `str` | `~/.cache/huggingface/hub` | Cache directory for the model      |
+| Args          | Type  | Required     | Default                    | Description                        |
+| ------------- | ----- | ------------ | -------------------------- | ---------------------------------- |
+| `--repo_id`   | `str` | **Required** |                            | Path or Hugging Face Repository ID |
+| `--token`     | `str` | **Optional** |                            | Hugging Face API Token             |
+| `--cache_dir` | `str` | **Optional** | `~/.cache/huggingface/hub` | Cache directory for the model      |
 
 ```bash
 source .venv/bin/activate
@@ -54,18 +54,18 @@ python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit"
 # Download the model from Hugging Face Hub with custom cache directory
 python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit" --cache_dir "/tmp/huggingface/hub"
 
-# Download the model from Hugging Face Hub with custom token
+# Download the model from Hugging Face Hub with custom hugging face token
 python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit" --token "YOUR_HUGGING_FACE_API_TOKEN"
 ```
 
 ### Streaming Inference
 
-| Args            | Type   | Default                                     | Description                |
-| --------------- | ------ | ------------------------------------------- | -------------------------- |
-| `-m`, `--model` | `str`  | `mlx-community/gemma-2-9b-it-4bit`          | Path to the model          |
-| `--prompt`      | `str`  | `What is the largest country in the world?` | Prompt for the LLM model   |
-| `--max_tokens`  | `int`  | `512`                                       | Maximum tokens to generate |
-| `--verbose`     | `bool` |                                             | Verbose mode               |
+| Args            | Type   | Required     | Default | Description                |
+| --------------- | ------ | ------------ | ------- | -------------------------- |
+| `-m`, `--model` | `str`  | **Required** |         | Path to the model          |
+| `--prompt`      | `str`  | **Required** |         | Prompt for the LLM model   |
+| `--max_tokens`  | `int`  | **Optional** | `512`   | Maximum tokens to generate |
+| `--verbose`     | `bool` | **Optional** |         | Verbose mode               |
 
 ```bash
 source .venv/bin/activate
@@ -88,12 +88,12 @@ python inference.py --max_tokens 1024
 
 ### Convert Hugging Face Model to MLX Model Format
 
-| Args               | Type   | Default | Description            |
-| ------------------ | ------ | ------- | ---------------------- |
-| `-m`, `--model`    | `str`  |         | Path to the model      |
-| `--quantize`       | `bool` |         | Whether Quantize model |
-| `--quantize_level` | `int`  | 4       | Quantize level (bits)  |
-| `--verbose`        | `bool` |         | Verbose mode           |
+| Args               | Type   | Required     | Default | Description            |
+| ------------------ | ------ | ------------ | ------- | ---------------------- |
+| `-m`, `--model`    | `str`  | **Required** |         | Path to the model      |
+| `--quantize`       | `bool` | **Required** |         | Whether Quantize model |
+| `--quantize_level` | `int`  | **Optional** | 4       | Quantize level (bits)  |
+| `--verbose`        | `bool` | **Optional** |         | Verbose mode           |
 
 ```bash
 source .venv/bin/activate

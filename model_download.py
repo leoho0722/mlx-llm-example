@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argument(
         "--repo_id",
         type=str,
-        help="Path or Hugging Face Repository ID",
+        help="Path or Hugging Face Model Repository ID",
         required=True
     )
     parser.add_argument(
