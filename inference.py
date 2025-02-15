@@ -53,14 +53,13 @@ def stream_inference(
             print(f"Generation tokens: {generation_tokens} tokens")
             print(f"Generation tps: {generation_tps :.2f} tokens/s")
             print(f"Peak memory: {peak_memory :.2f} GB")
+            print(f"\n\nOutput: {output}")
 
         if response.text == "<end_of_turn>":
             continue
 
         output += response.text
         print(response.text, end="", flush=True)
-
-    print(f"\n\nOutput: {output}")
 
 
 def parse_args():
