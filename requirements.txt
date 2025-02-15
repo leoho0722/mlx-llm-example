@@ -12,6 +12,7 @@ numpy==2.2.2
 packaging==24.2
 pip-autoremove==0.10.0
 protobuf==5.29.3
+python-dotenv==1.0.1
 PyYAML==6.0.2
 regex==2024.11.6
 requests==2.32.3

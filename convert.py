@@ -1,6 +1,9 @@
 import argparse
 
+from dotenv import load_dotenv
 from mlx_lm import convert
+
+load_dotenv(override=True)
 
 
 def convert_hf_to_mlx_model(
@@ -9,8 +12,10 @@ def convert_hf_to_mlx_model(
     quantize_level: int,
     verbose: bool
 ):
+    repo_id = model_id.split("/")[-1]
+
     if quantize:
-        upload_repo = f"mlx-community/{model_id}-{quantize_level}bit"
+        upload_repo = f"mlx-community/{repo_id}-{quantize_level}bit"
 
         if verbose:
             print(f"Upload repo: {upload_repo}")
@@ -22,7 +27,7 @@ def convert_hf_to_mlx_model(
             upload_repo=upload_repo
         )
     else:
-        upload_repo = f"mlx-community/{model_id}"
+        upload_repo = f"mlx-community/{repo_id}"
 
         if verbose:
             print(f"Upload repo: {upload_repo}")
@@ -76,4 +81,9 @@ if __name__ == "__main__":
         print(f"Verbose mode: {verbose}")
         print()
 
-    convert_hf_to_mlx_model(model_id, quantize, quantize_level, verbose)
+    convert_hf_to_mlx_model(
+        model_id,
+        quantize,
+        quantize_level,
+        verbose
+    )
