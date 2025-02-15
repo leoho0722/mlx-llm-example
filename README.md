@@ -9,10 +9,10 @@ LLM model inference on Apple Silicon Mac using the Apple MLX Framework.
 
 ### Hardware
 
-- Apple MacBooke Pro (13-inch, M2, 2022)
+- Apple MacBook Pro (13-inch, M2, 2022)
 - Apple M2 chips (8 cores CPU, 10 cores GPU)
 - 16GB RAM, 256GB SSD
-- macOS Sequoia 15.3
+- macOS Sequoia 15.3.1
 
 ### Software
 
@@ -28,12 +28,35 @@ python3.10 -m venv .venv
 source .venv/bin/activate
 ```
 
+### Install Dependencies
+
 ```bash
 pip install -U pip setuptools pip-autoremove
 pip install -r requirements.txt
 ```
 
 ## Run
+
+### Model Download
+
+| Args          | Type  | Default                    | Description                        |
+| ------------- | ----- | -------------------------- | ---------------------------------- |
+| `--repo_id`   | `str` |                            | Path or Hugging Face Repository ID |
+| `--token`     | `str` |                            | Hugging Face API Token             |
+| `--cache_dir` | `str` | `~/.cache/huggingface/hub` | Cache directory for the model      |
+
+```bash
+source .venv/bin/activate
+
+# Download the model from Hugging Face Hub
+python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit"
+
+# Download the model from Hugging Face Hub with custom cache directory
+python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit" --cache_dir "/tmp/huggingface/hub"
+
+# Download the model from Hugging Face Hub with custom token
+python model_download.py --repo_id "mlx-community/gemma-2-9b-it-4bit" --token "YOUR_HUGGING_FACE_API_TOKEN"
+```
 
 ### Streaming Inference
 
