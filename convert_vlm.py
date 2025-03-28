@@ -2,7 +2,8 @@ import argparse
 from typing import Optional
 
 from dotenv import load_dotenv
-from mlx_lm import convert
+from huggingface_hub.constants import HF_HUB_CACHE
+from mlx_vlm import convert
 
 load_dotenv(override=True)
 
@@ -12,6 +13,7 @@ def convert_hf_to_mlx_model(
     quantize: bool,
     quantize_level: int,
     upload: bool,
+    mlx_path: str,
     verbose: bool
 ):
     repo_id = model_id.split("/")[-1]
@@ -29,12 +31,13 @@ def convert_hf_to_mlx_model(
     if quantize:
         convert(
             model_id,
+            mlx_path,
             quantize=True,
             q_bits=quantize_level,
             upload_repo=upload_repo
         )
     else:
-        convert(model_id, upload_repo=upload_repo)
+        convert(model_id, mlx_path, upload_repo=upload_repo)
 
 
 def parse_args():
@@ -64,6 +67,12 @@ def parse_args():
         help="Upload the model to Hugging Face mlx-community organization"
     )
     parser.add_argument(
+        "--mlx_path",
+        type=str,
+        help="Path to store the mlx model",
+        required=True
+    )
+    parser.add_argument(
         "--verbose",
         action="store_true",
         help="Verbose mode"
@@ -79,6 +88,7 @@ if __name__ == "__main__":
     quantize: bool = args.quantize
     quantize_level: int = args.quantize_level
     upload: bool = args.upload
+    mlx_path: str = args.mlx_path
     verbose: bool = args.verbose
 
     if verbose:
@@ -95,5 +105,6 @@ if __name__ == "__main__":
         quantize,
         quantize_level,
         upload,
+        mlx_path,
         verbose
     )
